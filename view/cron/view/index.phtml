@@ -1,0 +1,77 @@
+<?php
+/**
+ * Pacific NM (https://www.pacificnm.com)
+ *
+ * @link      https://github.com/pacificnm/pnm for the canonical source repository
+ * @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
+ * @license
+ */
+?>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+					<?php echo $this->translate("Application Cron"); ?> 
+					<small><?php echo $this->entity->getCronCommand(); ?></small>
+				</h3>
+				<div class="box-tools">
+					<?php echo $this->deleteButton("cron-delete", array("id" => $this->entity->getCronId())); ?>
+					
+					<?php echo $this->updateButton("cron-update", array("id" => $this->entity->getCronId())); ?>
+				</div>
+			</div>
+			<div class="box-body box-profile">
+				<h3 class="profile-username text-center">
+					<?php echo $this->entity->getCronCommand(); ?>
+				</h3>
+				<p class="text-muted text-center"><?php echo $this->translate("Cron Id"); ?>
+					<?php echo $this->entity->getCronId(); ?>
+				</p>
+				<ul class="list-group list-group-unbordered">
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Cron Id"); ?>:</b>
+    					<?php echo $this->entity->getCronId(); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Command"); ?>:</b>
+    					<?php echo $this->entity->getCronCommand(); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Status"); ?>:</b>
+    					<?php echo ($this->entity->getCronStatus() == 0 ? $this->translate("Not Running") : $this->translate("Running")); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Enabled"); ?>:</b>
+    					<?php echo ($this->entity->getCronEnabled() == 1 ? $this->translate("Yes"): $this->translate("No")); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Run Once"); ?>:</b>
+    					<?php echo ($this->entity->getCronRunOnce() == 1 ? $this->translate("Yes") : $this->translate("No")); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Last Ran"); ?>:</b>
+    					<?php echo ($this->entity->getCronLastRun() > 0 ? date($this->appConfig()->getCOnfigDateLong(), $this->entity->getCronLastRun()) : $this->translate('Never Ran')); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Minute"); ?>:</b>
+    					<?php echo $this->entity->getCronMinute(); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Hour"); ?>:</b>
+    					<?php echo $this->entity->getCronHour(); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Day of Month"); ?>:</b>
+    					<?php echo $this->entity->getCronDom(); ?>
+    				</li>
+    				<li class="list-group-item">
+    					<b><?php echo $this->translate("Month"); ?>:</b>
+    					<?php echo $this->entity->getCronMonth(); ?>
+    				</li>
+    			</ul>
+    		</div>
+    	</div>
+    </div>
+</div>
