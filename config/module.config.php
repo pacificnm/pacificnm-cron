@@ -10,7 +10,7 @@ return array(
     'module' => array(
         'Cron' => array(
             'name' => 'Cron',
-            'version' => '1.0.1',
+            'version' => '1.0.2',
             'install' => array(
                 'require' => array(),
                 'sql' => 'sql/cron.sql'
