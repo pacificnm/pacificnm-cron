@@ -42,7 +42,7 @@ class ViewController extends AbstractApplicationController
         
         $this->getEventManager()->trigger('cronView', $this, array(
             'authId' => $this->identity()->getAuthId(),
-            'historyUrl' => $this->getRequest()->getUri(),
+            'requestUrl' => $this->getRequest()->getUri(),
             'cronEntity' => $entity
         ));
         
