@@ -47,7 +47,7 @@ class DeleteController extends AbstractApplicationController
         
                 $this->getEventManager()->trigger('cronDelete', $this, array(
                     'authId' => $this->identity() ->getAuthId(),
-                    'historyUrl' => $this->getRequest()->getUri(),
+                    'requestUrl' => $this->getRequest()->getUri(),
                     'cronEntity' => $entity
                 ));
         

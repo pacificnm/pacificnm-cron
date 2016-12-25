@@ -59,7 +59,7 @@ class CreateController extends AbstractApplicationController
                 // trigger event
                 $this->getEventManager()->trigger('cronCreate', $this, array(
                     'authId' => $this->identity()->getAuthId(),
-                    'historyUrl' => $this->getRequest()->getUri(),
+                    'requestUrl' => $this->getRequest()->getUri(),
                     'cronEntity' => $cronEntity,
                 ));
                 

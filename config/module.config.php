@@ -10,7 +10,7 @@ return array(
     'module' => array(
         'Cron' => array(
             'name' => 'Cron',
-            'version' => '1.0.0',
+            'version' => '1.0.1',
             'install' => array(
                 'require' => array(),
                 'sql' => 'sql/cron.sql'
@@ -40,7 +40,7 @@ return array(
             'cron-create' => array(
                 'pageTitle' => 'Cron',
                 'pageSubTitle' => 'New',
-                'activeMenuItem' => 'admin',
+                'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
                 'type' => 'literal',
                 'options' => array(
@@ -57,7 +57,7 @@ return array(
             'cron-delete' => array(
                 'pageTitle' => 'Cron',
                 'pageSubTitle' => 'Delete',
-                'activeMenuItem' => 'admin',
+                'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
                 'type' => 'segment',
                 'options' => array(
@@ -74,7 +74,7 @@ return array(
             'cron-index' => array(
                 'pageTitle' => 'Cron',
                 'pageSubTitle' => 'Home',
-                'activeMenuItem' => 'admin',
+                'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
                 'type' => 'literal',
                 'options' => array(
@@ -88,7 +88,7 @@ return array(
             'cron-rest' => array(
                 'pageTitle' => 'Cron',
                 'pageSubTitle' => 'Rest',
-                'activeMenuItem' => 'admin',
+                'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
                 'type' => 'segment',
                 'options' => array(
@@ -101,7 +101,7 @@ return array(
             'cron-update' => array(
                 'pageTitle' => 'Cron',
                 'pageSubTitle' => 'Edit',
-                'activeMenuItem' => 'admin',
+                'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
                 'type' => 'segment',
                 'options' => array(
@@ -119,7 +119,7 @@ return array(
             'cron-view' => array(
                 'pageTitle' => 'Cron',
                 'pageSubTitle' => 'View',
-                'activeMenuItem' => 'admin',
+                'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
                 'type' => 'segment',
                 'options' => array(
@@ -193,6 +193,7 @@ return array(
     'acl' => array(
         'default' => array(
             'guest' => array(),
+            'user' => array(),
             'administrator' => array(
                 'cron-index',
                 'cron-create',
@@ -206,14 +207,13 @@ return array(
     'menu' => array(
         'default' => array(
             array(
-                'key' => 'admin',
                 'name' => 'Admin',
+                'route' => 'admin-index',
                 'icon' => 'fa fa-gear',
                 'order' => 99,
                 'active' => true,
                 'items' => array(
                     array(
-                        'key' => 'cron-index',
                         'name' => 'Cron',
                         'route' => 'cron-index',
                         'icon' => 'fa fa-gear',

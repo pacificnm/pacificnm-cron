@@ -32,7 +32,7 @@ class IndexController extends AbstractApplicationController
         // trigger event view cron
         $this->getEventManager()->trigger('CronIndex', $this, array(
             'authId' => $this->identity()->getAuthId(),
-            'historyUrl' => $this->getRequest()->getUri()
+            'requestUrl' => $this->getRequest()->getUri()
         ));
         
         // set from params
