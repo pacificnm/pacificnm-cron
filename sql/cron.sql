@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `cron` (
   `cron_last_run` int(11) NOT NULL,
   `cron_status` int(3) NOT NULL DEFAULT '0',
   `cron_enabled` int(3) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2;
 
 --
 -- Dumping data for table `cron`
