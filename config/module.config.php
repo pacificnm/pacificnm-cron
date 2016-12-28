@@ -10,7 +10,7 @@ return array(
     'module' => array(
         'Cron' => array(
             'name' => 'Cron',
-            'version' => '1.0.2',
+            'version' => '1.0.3',
             'install' => array(
                 'require' => array(),
                 'sql' => 'sql/cron.sql'
@@ -42,6 +42,8 @@ return array(
                 'pageSubTitle' => 'New',
                 'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
+                'icon' => 'fa fa-heartbeat',
+                'layout' => 'admin',
                 'type' => 'literal',
                 'options' => array(
                     'route' => '/admin/cron/create',
@@ -59,6 +61,8 @@ return array(
                 'pageSubTitle' => 'Delete',
                 'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
+                'icon' => 'fa fa-heartbeat',
+                'layout' => 'admin',
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/admin/cron/delete/[:id]',
@@ -76,6 +80,8 @@ return array(
                 'pageSubTitle' => 'Home',
                 'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
+                'icon' => 'fa fa-heartbeat',
+                'layout' => 'admin',
                 'type' => 'literal',
                 'options' => array(
                     'route' => '/admin/cron',
@@ -90,6 +96,8 @@ return array(
                 'pageSubTitle' => 'Rest',
                 'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
+                'icon' => 'fa fa-heartbeat',
+                'layout' => 'rest',
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/api/cron[/:id]',
@@ -103,6 +111,8 @@ return array(
                 'pageSubTitle' => 'Edit',
                 'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
+                'icon' => 'fa fa-heartbeat',
+                'layout' => 'admin',
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/admin/cron/update/[:id]',
@@ -121,6 +131,8 @@ return array(
                 'pageSubTitle' => 'View',
                 'activeMenuItem' => 'admin-index',
                 'activeSubMenuItem' => 'cron-index',
+                'icon' => 'fa fa-heartbeat',
+                'layout' => 'admin',
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/admin/cron/view/[:id]',
@@ -180,8 +192,9 @@ return array(
     
     // view helpers
     'view_helpers' => array(
-        'factories' => array(),
-        'invokables' => array()
+        'factories' => array(
+            'CronSearchForm' => 'Cron\View\Helper\Factory\CronSearchFormFactory'
+        ),
     ),
     
     // view manager
@@ -211,12 +224,13 @@ return array(
                 'route' => 'admin-index',
                 'icon' => 'fa fa-gear',
                 'order' => 99,
+                'location' => 'left',
                 'active' => true,
                 'items' => array(
                     array(
                         'name' => 'Cron',
                         'route' => 'cron-index',
-                        'icon' => 'fa fa-gear',
+                        'icon' => 'fa fa-heartbeat',
                         'order' => 3,
                         'active' => true
                     )

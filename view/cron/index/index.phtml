@@ -12,65 +12,83 @@
 		<div class="box box-primary">
 			<div class="box-header">
 				<h3 class="box-title">
-					<i class="fa fa-gears"></i>
+					<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
 					<?php echo $this->translate("Cron"); ?>
 				</h3>
 				<div class="box-tools">
+					<?php echo $this->searchButton("cron-search"); ?>
+					
 					<?php echo $this->createButton("cron-create"); ?>
 				</div>
 			</div>
-		</div>	
 		<?php if($this->paginator->count() == 0):?>
 		<div class="box-body">
 			<div class="alert alert-info">
 				<i class="fa fa-info-circle"></i> <?php echo $this->translate("No Cron Jobs"); ?>
 				</div>
-			<?php else: ?>
-			<div class="box-body table-responsive no-padding">
-				<table
-					class="table table-bordered table-hover table-striped table-condensed">
-					<thead>
-						<tr>
-							<th><?php echo $this->translate("Command"); ?></th>
-							<th><?php echo $this->translate("Run Once"); ?></th>
-							<th><?php echo $this->translate("Minute"); ?></th>
-							<th><?php echo $this->translate("Hour"); ?></th>
-							<th><?php echo $this->translate("Day Of Month"); ?></th>
-							<th><?php echo $this->translate("Month"); ?></th>
-							<th><?php echo $this->translate("Last Run"); ?></th>
-							<th><?php echo $this->translate("Enabled"); ?></th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php foreach($this->paginator as $entity):?>
-						<tr <?php if($entity->getCronStatus() == 1):?> class="success"
-							<?php endif;?>>
-							<td><a
-								href="<?php echo $this->url("cron-view", array("id" => $entity->getCronId()));?>"
-								title="<?php Echo $this->translate("View"); ?>">
-										<?php echo $entity->getCronCommand(); ?>
-									</a></td>
-							<td><?php echo ($entity->getCronRunOnce() == 1  ? $this->translate("Yes") : $this->translate("No")); ?></td>
-							<td><?php echo $entity->getCronMinute(); ?></td>
-							<td><?php echo $entity->getCronHour(); ?></td>
-							<td><?php echo $entity->getCronDom(); ?></td>
-							<td><?php echo $entity->getCronMonth(); ?></td>
-							<td>
-								<?php if($entity->getCronLastRun() > 0): ?>
-									<?php echo date($this->appConfig()->getCOnfigDateLong(), $entity->getCronLastRun()); ?>
-								<?php else: ?>
-									<?php echo $this->translate("N/A"); ?>
-								<?php endif; ?>		
-							</td>
-							<td><?php echo ($entity->getCronEnabled() == 1  ? $this->translate("Yes") : $this->translate("No")); ?></td>
-							<td class="text-right"><?php echo $this->updateButton("cron-update", array("id" => $entity->getCronId()));?></td>
-						</tr>
-					<?php endforeach; ?>
-					</tbody>
-				</table>
-			<?php endif;?>
+		</div>
+		<?php else: ?>
+		<div class="box-body table-responsive no-padding">
+			<table class="table table-bordered table-hover table-striped table-condensed">
+				<thead>
+					<tr>
+						<th><?php echo $this->translate("Command"); ?></th>
+						<th><?php echo $this->translate("Run Once"); ?></th>
+						<th><?php echo $this->translate("Minute"); ?></th>
+						<th><?php echo $this->translate("Hour"); ?></th>
+						<th><?php echo $this->translate("Day Of Month"); ?></th>
+						<th><?php echo $this->translate("Month"); ?></th>
+						<th><?php echo $this->translate("Last Run"); ?></th>
+						<th><?php echo $this->translate("Enabled"); ?></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php foreach($this->paginator as $entity):?>
+					<tr <?php if($entity->getCronStatus() == 1):?> class="success"
+						<?php endif;?>>
+						<td><a
+							href="<?php echo $this->url("cron-view", array("id" => $entity->getCronId()));?>"
+							title="<?php Echo $this->translate("View"); ?>">
+									<?php echo $entity->getCronCommand(); ?>
+								</a>
+						</td>
+						<td><?php echo ($entity->getCronRunOnce() == 1  ? $this->translate("Yes") : $this->translate("No")); ?></td>
+						<td><?php echo $entity->getCronMinute(); ?></td>
+						<td><?php echo $entity->getCronHour(); ?></td>
+						<td><?php echo $entity->getCronDom(); ?></td>
+						<td><?php echo $entity->getCronMonth(); ?></td>
+						<td>
+							<?php if($entity->getCronLastRun() > 0): ?>
+								<?php echo date($this->appConfig()->getCOnfigDateLong(), $entity->getCronLastRun()); ?>
+							<?php else: ?>
+								<?php echo $this->translate("N/A"); ?>
+							<?php endif; ?>		
+						</td>
+						<td><?php echo ($entity->getCronEnabled() == 1  ? $this->translate("Yes") : $this->translate("No")); ?></td>
+						<td class="text-right"><?php echo $this->updateButton("cron-update", array("id" => $entity->getCronId()));?></td>
+					</tr>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+				
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<?php echo $this->Paginator(
+						$this->itemCountPerPage, 
+						$this->itemCount, 
+						$this->pageCount, 
+                        $this->page, 
+                        $this->routeParams,
+                        $this->queryParams);
+                    ?>
+				</div>
 			</div>
+		</div>
+		<?php endif;?>
+
 		</div>
 	</div>
 </div>
+
+<?php echo $this->cronSearchForm($this->queryParams); ?>
